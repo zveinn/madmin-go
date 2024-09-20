@@ -112,6 +112,7 @@ var SubSystems = set.CreateStringSet(
 	NotifyWebhookSubSys,
 	LambdaWebhookSubSys,
 	BrowserSubSys,
+	AuditEventQueueSubSys,
 )
 
 // EOSSubSystems - list of all subsystems for EOS
