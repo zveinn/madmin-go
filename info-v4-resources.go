@@ -203,7 +203,7 @@ type DriveResource struct {
 	Healing        bool        `json:"healing" msg:"h"`
 	Size           uint64      `json:"size" msg:"sz"`
 	Used           uint64      `json:"used" msg:"u"`
-	PercentageUsed uint64      `json:"percentageUsed" msg:"pu"`
+	PercentageUsed uint8       `json:"percentageUsed" msg:"pu"`
 	Available      uint64      `json:"available" msg:"a"`
 	InodesFree     uint64      `json:"inodesFree" msg:"if"`
 	InodesUsed     uint64      `json:"inodesUsed" msg:"iu"`
