@@ -2092,7 +2092,7 @@ func (z *DriveResource) DecodeMsg(dc *msgp.Reader) (err error) {
 				return
 			}
 		case "pu":
-			z.PercentageUsed, err = dc.ReadUint8()
+			z.PercentageUsed, err = dc.ReadUint64()
 			if err != nil {
 				err = msgp.WrapError(err, "PercentageUsed")
 				return
@@ -2289,7 +2289,7 @@ func (z *DriveResource) EncodeMsg(en *msgp.Writer) (err error) {
 		if err != nil {
 			return
 		}
-		err = en.WriteUint8(z.PercentageUsed)
+		err = en.WriteUint64(z.PercentageUsed)
 		if err != nil {
 			err = msgp.WrapError(err, "PercentageUsed")
 			return
@@ -2408,7 +2408,7 @@ func (z *DriveResource) MarshalMsg(b []byte) (o []byte, err error) {
 		o = msgp.AppendUint64(o, z.Used)
 		// string "pu"
 		o = append(o, 0xa2, 0x70, 0x75)
-		o = msgp.AppendUint8(o, z.PercentageUsed)
+		o = msgp.AppendUint64(o, z.PercentageUsed)
 		// string "a"
 		o = append(o, 0xa1, 0x61)
 		o = msgp.AppendUint64(o, z.Available)
@@ -2525,7 +2525,7 @@ func (z *DriveResource) UnmarshalMsg(bts []byte) (o []byte, err error) {
 				return
 			}
 		case "pu":
-			z.PercentageUsed, bts, err = msgp.ReadUint8Bytes(bts)
+			z.PercentageUsed, bts, err = msgp.ReadUint64Bytes(bts)
 			if err != nil {
 				err = msgp.WrapError(err, "PercentageUsed")
 				return
@@ -2591,7 +2591,7 @@ func (z *DriveResource) UnmarshalMsg(bts []byte) (o []byte, err error) {
 
 // Msgsize returns an upper bound estimate of the number of bytes occupied by the serialized message
 func (z *DriveResource) Msgsize() (s int) {
-	s = 3 + 2 + msgp.StringPrefixSize + len(z.ID) + 4 + msgp.IntSize + 5 + msgp.IntSize + 2 + msgp.StringPrefixSize + len(z.Path) + 3 + msgp.StringPrefixSize + len(z.NodeID) + 3 + msgp.IntSize + 3 + msgp.IntSize + 2 + msgp.StringPrefixSize + len(z.State) + 2 + msgp.BoolSize + 3 + msgp.Uint64Size + 2 + msgp.Uint64Size + 3 + msgp.Uint8Size + 2 + msgp.Uint64Size + 3 + msgp.Uint64Size + 3 + msgp.Uint64Size + 4 + msgp.StringPrefixSize + len(z.UUID) + 2
+	s = 3 + 2 + msgp.StringPrefixSize + len(z.ID) + 4 + msgp.IntSize + 5 + msgp.IntSize + 2 + msgp.StringPrefixSize + len(z.Path) + 3 + msgp.StringPrefixSize + len(z.NodeID) + 3 + msgp.IntSize + 3 + msgp.IntSize + 2 + msgp.StringPrefixSize + len(z.State) + 2 + msgp.BoolSize + 3 + msgp.Uint64Size + 2 + msgp.Uint64Size + 3 + msgp.Uint64Size + 2 + msgp.Uint64Size + 3 + msgp.Uint64Size + 3 + msgp.Uint64Size + 4 + msgp.StringPrefixSize + len(z.UUID) + 2
 	if z.Metrics == nil {
 		s += msgp.NilSize
 	} else {
